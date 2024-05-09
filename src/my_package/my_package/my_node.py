@@ -93,6 +93,7 @@ class YCoordNode(Node):
         self.alarm_subcriber = self.create_subscription(String, 'alarm_topic', self.alarm_callback, 10)
         self.ready_subcriber = self.create_subscription(String, 'ready_topic', self.ready_callback, 10)
         self.y_coord_subcriber = self.create_subscription(Int32, 'y_coord_topic', self.subscribe_y_coord, 3)
+        self.ip_address_subcriber = self.create_subscription(String, 'ip_address_topic', self.subscribe_ip_address, 10)
 
         self.get_logger().info('YCoord node initialized')
         self.y_coord = 0
@@ -129,6 +130,7 @@ class MotorNode(Node):
         self.alarm_subcriber = self.create_subscription(String, 'alarm_topic', self.alarm_callback, 10)
         self.ready_subcriber = self.create_subscription(String, 'ready_topic', self.ready_callback, 10)
         self.motor_subcriber = self.create_subscription(Int32, 'motor_topic', self.subscribe_motor, 10)
+        self.ip_address_subcriber = self.create_subscription(String, 'ip_address_topic', self.subscribe_ip_address, 10)
 
         self.get_logger().info('Motor node initialized')
         self.motor = 0
@@ -218,10 +220,10 @@ def hello():
 
 def publish_ip_address_to_ros(ip_address):
     node = rclpy.create_node('flask_publisher')
-    publisher = node.create_publisher(String, 'ip_address_topic', 10)
+    ip_address_publisher = node.create_publisher(String, 'ip_address_topic', 10)
     msg = String()
     msg.data = ip_address
-    publisher.publish(msg)
+    ip_address_publisher.publish(msg)
 
 @app.route('/ip-address', methods=['POST'])
 def set_ip_address():
@@ -238,14 +240,14 @@ def set_ip_address():
 def publish_coord_to_ros(x_coord, y_coord):
     if valid_coordinates(x_coord, y_coord):
         node = rclpy.create_node('flask_publisher')
-        x_publisher = node.create_publisher(Int32, 'x_coord_topic', 10)
-        y_publisher = node.create_publisher(Int32, 'y_coord_topic', 10)
+        x_coord_publisher = node.create_publisher(Int32, 'x_coord_topic', 10)
+        y_coord_publisher = node.create_publisher(Int32, 'y_coord_topic', 10)
         x_coord_msg = Int32()
         x_coord_msg.data = x_coord
         y_coord_msg = Int32()
         y_coord_msg.data = y_coord
-        x_publisher.publish(x_coord_msg)
-        y_publisher.publish(y_coord_msg)
+        x_coord_publisher.publish(x_coord_msg)
+        y_coord_publisher.publish(y_coord_msg)
         print('Coordinates received: x={}, y={}'.format(x_coord, y_coord))
         return 'Coordinates received: x={}, y={}'.format(x_coord, y_coord)
     else:
@@ -268,10 +270,10 @@ def set_alarm_coordinates():
 
 def publish_time_to_ros(time):
     node = rclpy.create_node('flask_publisher')
-    publisher = node.create_publisher(String, 'time_topic', 10)
+    time_publisher = node.create_publisher(String, 'time_topic', 10)
     msg = String()
     msg.data = time
-    publisher.publish(msg)
+    time_publisher.publish(msg)
 
 @app.route('/time', methods=['POST'])
 def set_time():
@@ -288,10 +290,10 @@ def set_time():
 
 def publish_motor_to_ros(motor):
     node = rclpy.create_node('flask_publisher')
-    publisher = node.create_publisher(String, 'motor_topic', 10)
+    motor_publisher = node.create_publisher(String, 'motor_topic', 10)
     msg = String()
     msg.data = motor
-    publisher.publish(msg)
+    motor_publisher.publish(msg)
 
 @app.route('/motor', methods=['POST'])
 def set_motor():
