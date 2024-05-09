@@ -89,7 +89,7 @@
 3. sudo apt install python3
 4. flask 설치 (pip install flask)
 5. 프로젝트 폴더에서 ros2 pkg create --build-type ament_python --node-name my_node my_package
-6. src에 있는 mynode.py에 다운받은 코드 붙여넣기
+6. src/my_package/my_package/my_node.py에 다운받은 코드 my_node.py 붙여넣기
 7. 최상위 디렉토리에서 colcon build
 8. install/my_package/share/my_package/templates에 다운받은 index.html 넣기
 9. 새로운 터미널을 열고 최상위 디렉토리에서 아래 명령 실행
