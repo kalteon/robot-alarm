@@ -1,0 +1,5 @@
+  File "/home/suho/mid/install/my_package/lib/python3.8/site-packages/my_package/my_node.py", line 35
+    index_path = os.path.join(pkg_path, templates/index.html')
+                                                             ^
+SyntaxError: EOL while scanning string literal
+

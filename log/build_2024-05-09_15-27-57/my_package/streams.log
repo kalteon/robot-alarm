@@ -1,0 +1,21 @@
+[4.451s] Invoking command in '/home/suho/mid/src/my_package': PYTHONPATH=/home/suho/mid/build/my_package/prefix_override:/home/suho/mid/install/my_package/lib/python3.8/site-packages: /usr/bin/python3 setup.py egg_info --egg-base ../../build/my_package build --build-base /home/suho/mid/build/my_package/build install --record /home/suho/mid/build/my_package/install.log --install-scripts $base/lib/my_package --single-version-externally-managed
+[5.035s] running egg_info
+[5.094s] writing ../../build/my_package/my_package.egg-info/PKG-INFO
+[5.095s] writing dependency_links to ../../build/my_package/my_package.egg-info/dependency_links.txt
+[5.096s] writing entry points to ../../build/my_package/my_package.egg-info/entry_points.txt
+[5.107s] writing requirements to ../../build/my_package/my_package.egg-info/requires.txt
+[5.107s] writing top-level names to ../../build/my_package/my_package.egg-info/top_level.txt
+[5.210s] reading manifest file '../../build/my_package/my_package.egg-info/SOURCES.txt'
+[5.218s] writing manifest file '../../build/my_package/my_package.egg-info/SOURCES.txt'
+[5.218s] running build
+[5.218s] running build_py
+[5.219s] running install
+[5.219s] running install_lib
+[5.220s] running install_data
+[5.223s] running install_egg_info
+[5.231s] removing '/home/suho/mid/install/my_package/lib/python3.8/site-packages/my_package-0.0.0-py3.8.egg-info' (and everything under it)
+[5.240s] Copying ../../build/my_package/my_package.egg-info to /home/suho/mid/install/my_package/lib/python3.8/site-packages/my_package-0.0.0-py3.8.egg-info
+[5.243s] running install_scripts
+[5.307s] Installing my_node script to /home/suho/mid/install/my_package/lib/my_package
+[5.314s] writing list of installed files to '/home/suho/mid/build/my_package/install.log'
+[5.450s] Invoked command in '/home/suho/mid/src/my_package' returned '0': PYTHONPATH=/home/suho/mid/build/my_package/prefix_override:/home/suho/mid/install/my_package/lib/python3.8/site-packages: /usr/bin/python3 setup.py egg_info --egg-base ../../build/my_package build --build-base /home/suho/mid/build/my_package/build install --record /home/suho/mid/build/my_package/install.log --install-scripts $base/lib/my_package --single-version-externally-managed

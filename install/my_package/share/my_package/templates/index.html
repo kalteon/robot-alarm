@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>physical alarm system</title>
+</head>
+<body>
+    <div style="text-align: center;">
+        <p style="margin-bottom: 50px;"><h1>physical alarm setting</h1></p>
+    
+            <P style="margin-bottom: 50px;">
+                <label>IP Adress</label>
+                <input type="text" id="ipAddress" name="ipAddress">
+                <input type="button" value="Set IP Address" onclick="setIpAddress()">
+            </P>
+
+            <p style="margin-bottom: 50px;">
+                <label for="x-coord">X Coordinate:</label>
+                <button type="button" id="x-minus" onclick="minusX()">-</button>
+                <input type="number" id="x-coord" name="x-coord">
+                <button type="button" id="x-plus" onclick="plusX()">+</button><br>
+        
+                <label for="y-coord">Y Coordinate:</label>
+                <button type="button" id="y-minus" onclick="minusY()">-</button>
+                <input type="number" id="y-coord" name="y-coord">
+                <button type="button" id="y-plus" onclick="plusY()">+</button><br>
+                <input type="button" value="Set Alarm Coordinate" onclick="setAlarmCoord()">
+            </p>
+
+            <p style="margin-bottom: 50px;">
+                <label for="time">Time:</label>
+                <input type="time" id="time" name="time">
+                <button type="button" id="set-time" onclick="setTime()">Set Time</button>
+            </p>
+
+            <P style="margin-bottom: 50px;">
+                <label for="motor">Motor:</label>
+                <input type="number" id="motor" name="motor">
+                <button type="button" id="set-motor" onclick="setMotor()">Set Motor</button>
+            </P>
+    </div>
+
+    <script>
+        function setIpAddress() {
+            var ipAddress = document.getElementById('ipAddress').value;
+            fetch('/ip-address', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json'
+            },
+                body: JSON.stringify({ ipAddress: ipAddress })
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+        }
+
+        function minusX() {
+            var xCoord = document.getElementById('x-coord').value;
+            xCoord = parseInt(xCoord) - 1;
+            document.getElementById('x-coord').value = xCoord;
+            moveCoord(xCoord, document.getElementById('y-coord').value);
+        }
+
+        function plusX() {
+            var xCoord = document.getElementById('x-coord').value;
+            xCoord = parseInt(xCoord) + 1;
+            document.getElementById('x-coord').value = xCoord;
+            moveCoord(xCoord, document.getElementById('y-coord').value);
+        }
+
+        function minusY() {
+            var yCoord = document.getElementById('y-coord').value;
+            yCoord = parseInt(yCoord) - 1;
+            document.getElementById('y-coord').value = yCoord;
+            moveCoord(document.getElementById('x-coord').value, yCoord);
+        }
+
+        function plusY() {
+            var yCoord = document.getElementById('y-coord').value;
+            yCoord = parseInt(yCoord) + 1;
+            document.getElementById('y-coord').value = yCoord;
+            moveCoord(parseInt(document.getElementById('x-coord').value), yCoord);
+        }
+
+        function moveCoord(xCoord, yCoord) {
+            var xCoord = parseInt(xCoord);
+            var yCoord = parseInt(yCoord);
+
+            if (isNaN(xCoord) || isNaN(yCoord)) {
+                alert('Error: xCoord and yCoord must be integers');
+                return;
+            }
+
+            fetch('/coord', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json'
+            },
+                body: JSON.stringify({ xCoord: xCoord, yCoord: yCoord })
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+        }
+
+        function setAlarmCoord() {
+            var xCoord = parseInt(document.getElementById('x-coord').value)
+            var yCoord = parseInt(document.getElementById('y-coord').value)
+            if (isNaN(xCoord) || isNaN(yCoord)) {
+                alert('Error: xCoord and yCoord must be integers');
+                return;
+            }
+            fetch('/coord/alarm', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json'
+            },
+                body: JSON.stringify({ xCoord: xCoord, yCoord: yCoord })
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+        }
+
+        function setTime() {
+            var time = document.getElementById('time').value;
+            fetch('/time', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json'
+            },
+                body: JSON.stringify({ time: time })
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+        }
+
+        function setMotor() {
+            var motorValue = document.getElementById('motor').value;
+            console.log(motorValue)
+            if (isNaN(parseInt(motorValue)) || parseInt(motorValue) < 0 || parseInt(motorValue) > 255) {
+                alert('모터 값은 0에서 255 사이어야 합니다.');
+                return;
+            }
+            fetch('/motor', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json'
+            },
+                body: JSON.stringify({ motor: motorValue })
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>

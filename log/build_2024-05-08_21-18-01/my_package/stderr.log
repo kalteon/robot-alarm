@@ -1,0 +1,5 @@
+  File "/home/suho/mid/install/my_package/lib/python3.8/site-packages/my_package/my_node.py", line 99
+    await run_ros_nodes()
+    ^
+SyntaxError: 'await' outside async function
+

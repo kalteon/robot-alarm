@@ -1,0 +1,21 @@
+[8.563s] Invoking command in '/home/suho/mid/src/my_package': PYTHONPATH=/home/suho/mid/build/my_package/prefix_override:/home/suho/mid/install/my_package/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/my_package build --build-base /home/suho/mid/build/my_package/build install --record /home/suho/mid/build/my_package/install.log --install-scripts $base/lib/my_package --single-version-externally-managed
+[9.704s] running egg_info
+[9.708s] writing ../../build/my_package/my_package.egg-info/PKG-INFO
+[9.714s] writing dependency_links to ../../build/my_package/my_package.egg-info/dependency_links.txt
+[9.801s] writing entry points to ../../build/my_package/my_package.egg-info/entry_points.txt
+[9.802s] writing requirements to ../../build/my_package/my_package.egg-info/requires.txt
+[9.803s] writing top-level names to ../../build/my_package/my_package.egg-info/top_level.txt
+[9.939s] reading manifest file '../../build/my_package/my_package.egg-info/SOURCES.txt'
+[9.959s] writing manifest file '../../build/my_package/my_package.egg-info/SOURCES.txt'
+[9.967s] running build
+[9.968s] running build_py
+[9.968s] running install
+[9.988s] running install_lib
+[9.989s] running install_data
+[9.990s] running install_egg_info
+[9.995s] removing '/home/suho/mid/install/my_package/lib/python3.8/site-packages/my_package-0.0.0-py3.8.egg-info' (and everything under it)
+[9.998s] Copying ../../build/my_package/my_package.egg-info to /home/suho/mid/install/my_package/lib/python3.8/site-packages/my_package-0.0.0-py3.8.egg-info
+[9.999s] running install_scripts
+[10.046s] Installing my_node script to /home/suho/mid/install/my_package/lib/my_package
+[10.127s] writing list of installed files to '/home/suho/mid/build/my_package/install.log'
+[10.414s] Invoked command in '/home/suho/mid/src/my_package' returned '0': PYTHONPATH=/home/suho/mid/build/my_package/prefix_override:/home/suho/mid/install/my_package/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/my_package build --build-base /home/suho/mid/build/my_package/build install --record /home/suho/mid/build/my_package/install.log --install-scripts $base/lib/my_package --single-version-externally-managed
