@@ -71,7 +71,33 @@
 4. ready_subcriber
 
 ## 5. 컴파일 및 빌드 방법
+1. ubuntu 20.04에 ros2 설치 (https://puzzling-cashew-c4c.notion.site/ROS-2-Foxy-Linux20-04-58f0c6f2537e498eb8fe163ad1f13ce5)
+2. sudo apt update
+3. sudo apt install python3
+3. flask 설치 (pip install flask)
+4. git clone으로 소스코드 받기
+5. 프로젝트 최상위 디렉토리에서 colcon build
+6. 새로운 터미널을 열고 최상위 디렉토리에서 아래 명령 실팽
+7. source install/local_setup.bash
+8. rosfoxy
+9. ros2 run my_package my_node
 
-## 6. 환경 설정
+만약 위의 방법이 되지 않으면,
+1. ubuntu 20.04에 ros2 설치 (https://puzzling-cashew-c4c.notion.site/ROS-2-Foxy-Linux20-04-58f0c6f2537e498eb8fe163ad1f13ce5)
+2. sudo apt update
+3. sudo apt install python3
+4. flask 설치 (pip install flask)
+5. 프로젝트 폴더에서 ros2 pkg create --build-type ament_python --node-name my_node my_package
+6. src에 있는 mynode.py에 다운받은 코드 붇여넣기
+7. 최상위 디렉토리에서 colcon build
+8. install/my_package/share/my_package/templates에 다운받은 index.html 넣기
+9. 새로운 터미널을 열고 최상위 디렉토리에서 아래 명령 실팽
+10. source install/local_setup.bash
+11. rosfoxy
+12. ros2 run my_package my_node
    
-6. 향후 계획
+## 6. 향후 계획
+- topic의 구독이 잘 안되는 이슈 해결
+- 코드를 노드 별로 분할하여 리팩토링
+- 빛 관련 노드를 추가해 반짝이는 기능 추가
+- 예외 처리 및 실패시 재전송 추가
