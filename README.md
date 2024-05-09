@@ -33,12 +33,12 @@
   5. 모터(motor)
   
    flask
-- 사용자의 정보를 받아서 ROS2 node에 발행합니다.
-  1. ip_address_topic publisher
-  2. x_coord_topic publisher
-  3. y_coord_topic publisher
-  4. time_topic publisher
-  5. motor_topic publisher
+- 사용자의 정보를 받아서 ROS2 node에 topic 방식으로 발행합니다.
+  1. ip_address_publisher
+  2. y_coord_publisher
+  3. y_coord_publisher
+  4. time_publisher
+  5. motor_publisher
 
    TimeNode
 - time을 topic으로 구독하여 local 시간과 비교하여 같으면 alarm event를 발행, 1분 후 ready event를 발행하여 대기 상태로 전환합니다.
