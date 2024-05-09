@@ -26,49 +26,49 @@
    
    #### html
 - 사용자 인터페이스로 다음과 같은 정보를 받습니다.
-  1. 로봇의 IP(ip_address)
-  2. x좌표(x_coord)
-  3. y좌표(y_coord_
-  4. 알람 시각(time)
-  5. 모터(motor)
+1. 로봇의 IP(ip_address)
+2. x좌표(x_coord)
+3. y좌표(y_coord_
+4. 알람 시각(time)
+5. 모터(motor)
   
   #### flask
 - 사용자의 정보를 받아서 ROS2 node에 topic 방식으로 발행합니다.
-  1. ip_address_publisher
-  2. y_coord_publisher
-  3. y_coord_publisher
-  4. time_publisher
-  5. motor_publisher
+1. ip_address_publisher
+2. y_coord_publisher
+3. y_coord_publisher
+4. time_publisher
+5. motor_publisher
 
   #### TimeNode
 - time을 topic으로 구독하여 local 시간과 비교하여 같으면 alarm event를 발행, 1분 후 ready event를 발행하여 대기 상태로 전환합니다.
-  1. time_subcriber
-  2. alarm_publisher
-  3. ready_publisher
+1. time_subcriber
+2. alarm_publisher
+3. ready_publisher
 
   #### XCoordNode
 - ip_address와 x_coord를 구독하여 저장하고, alarm event가 발생하면 http method로 로봇을 제어합니다.
 1분후 ready event가 발생하면 x_coord를 0으로 로봇을 제어합니다.
-  1. ip_address_subcriber
-  2. x_coord_subcriber
-  3. alarm_subcriber
-  4. ready_subcriber
+1. ip_address_subcriber
+2. x_coord_subcriber
+3. alarm_subcriber
+4. ready_subcriber
     
   #### YCoordNode
-- ip_address와 x_coord를 구독하여 저장하고, alarm event가 발생하면 http method로 로봇을 제어합니다.
-1분후 ready event가 발생하면 x_coord를 0으로 로봇을 제어합니다.
-  1. ip_address_subcriber
-  2. y_coord_subcriber
-  3. alarm_subcriber
-  4. ready_subcriber
+- ip_address와 y_coord를 구독하여 저장하고, alarm event가 발생하면 http method로 로봇을 제어합니다.
+1분후 ready event가 발생하면 y_coord를 0으로 로봇을 제어합니다.
+1. ip_address_subcriber
+2. y_coord_subcriber
+3. alarm_subcriber
+4. ready_subcriber
   
   #### MotorNode
-- ip_address와 x_coord를 구독하여 저장하고, alarm event가 발생하면 http method로 로봇을 제어합니다.
-1분후 ready event가 발생하면 x_coord를 0으로 로봇을 제어합니다.
-  1. ip_address_subcriber
-  2. motor_subcriber
-  3. alarm_subcriber
-  4. ready_subcriber
+- ip_address와 motor를 구독하여 저장하고, alarm event가 발생하면 http method로 로봇을 제어합니다.
+1분후 ready event가 발생하면 motor를 0으로 로봇을 제어합니다.
+1. ip_address_subcriber
+2. motor_subcriber
+3. alarm_subcriber
+4. ready_subcriber
 
 ## 5. 컴파일 및 빌드 방법
 
